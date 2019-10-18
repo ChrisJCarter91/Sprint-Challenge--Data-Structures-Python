@@ -4,8 +4,17 @@ class RingBuffer:
     self.current = 0
     self.storage = [None]*capacity
 
+#append an element at the end of the buffer
+
   def append(self, item):
-    pass
+    if self.current == self.capacity:
+      self.current = 0
+    self.storage[self.current] = item
+    self.current += 1
 
   def get(self):
-    pass
+    full = []
+    for item in self.storage:
+      if item != None:
+        full.append(item)
+    return full
